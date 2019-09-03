@@ -69,6 +69,6 @@ sudo make install
 sudo systemctl enable ly.service
 sudo systemctl disable getty@tty2.service
 sudo rm ./obmenu-generator_0.85-3_all.deb
+fi
 read -rsn1 -p "Press any key to reboot";echo
 sudo shutdown -r now
-fi
