@@ -47,9 +47,13 @@ echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 sudo apt -y install ./obmenu-generator_0.85-3_all.deb
+read -r -p "Are you sure? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
 echo "Installing Papirus Icons Pack"
 read -rsn1 -p "Press any key to continue";echo
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
+else
 echo "Installing ly diplay manager"
 read -rsn1 -p "Press any key to reboot";echo
 cd /opt/
@@ -63,3 +67,4 @@ sudo systemctl disable getty@tty2.service
 sudo rm ./obmenu-generator_0.85-3_all.deb
 read -rsn1 -p "Press any key to reboot";echo
 sudo shutdown -r now
+fi
