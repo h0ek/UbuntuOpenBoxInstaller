@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cat << "EOF"
  _____ ______  _____  _   _ ______  _____ __   __
 |  _  || ___ \|  ___|| \ | || ___ \|  _  |\ \ / /
@@ -18,7 +18,8 @@ echo "This script will install and configure OpenBox window manager
 with some software and customized configuration files. It works 
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
-read -p "Press any key to continue... "
+printf 'Press [ENTER] to continue...'
+read _
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
