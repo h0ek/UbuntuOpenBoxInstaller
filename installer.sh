@@ -60,7 +60,6 @@ read -rsn1 -p "Press any key to continue";echo
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
 else
 echo "Installing ly diplay manager"
-read -rsn1 -p "Press any key to reboot";echo
 cd /opt/
 sudo git clone https://github.com/cylgom/ly.git
 cd /ly/
