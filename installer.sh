@@ -23,28 +23,28 @@ read -rsn1 -p "Press any key to continue";echo
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
 echo "Installing the packages required to build the VirtualBox Guest Additions"
-apt -y install gcc make perl dkms
+sudo apt -y install gcc make perl dkms
 #Install VBoxAdditions
 echo "Please mount CD with VirtualBox Guest Additions"
 read -rsn1 -p "Press any key to continue";echo
 #Create dir and mount CD
 echo "Mounting CDROM"
-mkdir /media/vbox
-mount /dev/cdrom /media/vbox/
+sudo mkdir /media/vbox
+sudo mount /dev/cdrom /media/vbox/
 echo "Installing VirtualBox Guest Additions"
-sh /media/vbox/VBoxLinuxAdditions.run
+sudo sh /media/vbox/VBoxLinuxAdditions.run
 #Eject CD and cleanup
-eject
-rm -R /media/vbox/
+sudo eject
+sudo rm -R /media/vbox/
 #Adding User to vboxsf
 echo "Adding User to vboxsf"
-usermod -aG vboxsf $user
+sudo usermod -aG vboxsf $user
 #Installing all packages
 echo "Installing all packages"
-apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
+sudo apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
 #Installing obmenu-generator
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 apt -y install ./obmenu-generator_0.85-3_all.deb
-rm ./obmenu-generator_0.85-3_all.deb
+sudo rm ./obmenu-generator_0.85-3_all.deb
 read -rsn1 -p "Press any key to reboot";echo
-shutdown -r now
+sudo shutdown -r now
