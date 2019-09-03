@@ -18,9 +18,15 @@ with some software and customized configuration files. It works
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
 echo
- read -r -p "Are you sure? [Y/n]" response
- response=${response,,} # tolower
- if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+echo "Press any key to continue"
+while [ true ] ; do
+read -t 3 -n 1
+if [ $? = 0 ] ; then
+exit ;
+else
+echo "waiting for the keypress"
+fi
+done
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
@@ -28,9 +34,6 @@ echo "Installing the packages required to build the VirtualBox Guest Additions"
 apt -y install gcc make perl dkms
 #Install VBoxAdditions
 echo "Please mount CD with VirtualBox Guest Additions"
- read -r -p "Mounted? [Y/n]" response
- response=${response,,} # tolower
- if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
 #Create dir and mount CD
 echo "Mounting CDROM"
 mkdir /media/vbox
@@ -46,5 +49,3 @@ usermod -aG vboxsf $user
 #Installing all packages
 echo "Installing all packages"
 apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
- fi
- fi
