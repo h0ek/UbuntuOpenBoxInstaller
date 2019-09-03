@@ -18,7 +18,7 @@ with some software and customized configuration files. It works
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
 echo
-read -p "Press any key to continue... " -n1 -s
+read -p "Press any key to continue... "
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
