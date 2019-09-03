@@ -17,12 +17,16 @@ echo "This script will install and configure OpenBox window manager
 with some software and customized configuration files. It works 
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
+echo
 read -p "Press enter to continue"
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
 echo "Installing the packages required to build the VirtualBox Guest Additions"
+while true;do echo -n .;sleep 1;done &
 apt -y install gcc make perl dkms
+kill $!; trap 'kill $!' SIGTERM
+echo done
 #Install VBoxAdditions
 echo "Please mount CD with VirtualBox Guest Additions"
 read -n 1 -s -r -p "Press any key to continue"
@@ -40,4 +44,4 @@ echo "Adding User to vboxsf"
 usermod -aG vboxsf $user
 #Installing all packages
 echo "Installing all packages"
-apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit install libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
+apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
