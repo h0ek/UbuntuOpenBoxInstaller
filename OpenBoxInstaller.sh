@@ -20,10 +20,10 @@ light and clean OpenBox machine."
 echo
 #Check root
 [ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
-#Install packages
-mkdir /media/vbox
-mount /dev/cdrom /media/vbox/
-sh /media/vbox/VBoxLinuxAdditions.run
-eject
-usermod -aG vboxsf $user
+#Install VBoxAdditions
+#mkdir /media/vbox
+#mount /dev/cdrom /media/vbox/
+#sh /media/vbox/VBoxLinuxAdditions.run
+#eject
+#usermod -aG vboxsf $user
 apt get install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit install libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
