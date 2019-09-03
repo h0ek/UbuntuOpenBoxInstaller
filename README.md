@@ -8,6 +8,6 @@ During installation select your language, time zone, keyboard layout, create use
 
 2. Login using your username and password, download and run the script. Just write the command to your terminal
 ```bash
-wget -qO- https://raw.githubusercontent.com/h0ek/UbuntuOpenBoxInstaller/master/OpenBoxInstaller.sh | sudo sh
+wget -qO- https://raw.githubusercontent.com/h0ek/UbuntuOpenBoxInstaller/master/OpenBoxInstaller.sh | sudo bash
 ```
 3. Follow the instructions on the screen.
