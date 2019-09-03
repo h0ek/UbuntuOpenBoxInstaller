@@ -10,4 +10,7 @@ During installation select your language, time zone, keyboard layout, create use
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/h0ek/UbuntuOpenBoxInstaller/master/OpenBoxInstaller.sh)" root
 ```
+```bash
+bash <(wget -qO- https://raw.githubusercontent.com/h0ek/UbuntuOpenBoxInstaller/master/OpenBoxInstaller.sh)
+```
 3. Follow the instructions on the screen.
