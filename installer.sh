@@ -47,5 +47,8 @@ echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 apt -y install ./obmenu-generator_0.85-3_all.deb
+echo "Installing Papirus Icons Pack"
+read -rsn1 -p "Press any key to continue";echo
+wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
 read -rsn1 -p "Press any key to reboot";echo
 shutdown -r now
