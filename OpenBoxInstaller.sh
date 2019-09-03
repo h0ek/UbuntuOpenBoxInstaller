@@ -18,15 +18,7 @@ with some software and customized configuration files. It works
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
 echo
-echo "Press any key to continue"
-while [ true ] ; do
-read -t 3 -n 1
-if [ $? = 0 ] ; then
-exit ;
-else
-echo "waiting for the keypress"
-fi
-done
+read -p "Press any key to continue... " -n1 -s
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
