@@ -61,9 +61,9 @@ wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-
 else
 echo "Installing ly diplay manager"
 sudo git clone https://github.com/cylgom/ly.git /opt/ly/
-sudo make github /opt/ly/
-sudo make /opt/ly/
-sudo make install /opt/ly/
+sudo make github -C /opt/ly/ 
+sudo make -C /opt/ly/
+sudo make install -C /opt/ly/
 sudo systemctl enable ly.service
 sudo systemctl disable getty@tty2.service
 sudo rm ./obmenu-generator_0.85-3_all.deb
