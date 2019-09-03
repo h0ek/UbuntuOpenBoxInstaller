@@ -20,7 +20,12 @@ light and clean OpenBox machine."
 echo
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
+#Install the packages required to build the VirtualBox Guest Additions
+echo "Installing the packages required to build the VirtualBox Guest Additions"
+apt install gcc make perl dkms
 #Install VBoxAdditions
+echo "Please mount CD with VirtualBox Guest Additions"
+read -n 1 -s -r -p "Press any key to continue"
 mkdir /media/vbox
 mount /dev/cdrom /media/vbox/
 sh /media/vbox/VBoxLinuxAdditions.run
