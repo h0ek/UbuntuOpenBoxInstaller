@@ -52,7 +52,7 @@ read -rsn1 -p "Press any key to continue";echo
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
 echo "Installing ly diplay manager"
 read -rsn1 -p "Press any key to reboot";echo
-sudo cd /opt
+cd /opt
 sudo git clone https://github.com/cylgom/ly.git
 cd ly
 sudo make github
@@ -60,5 +60,7 @@ sudo make
 sudo make install
 sudo systemctl enable ly.service
 sudo systemctl disable getty@tty2.service
+cd ~
+sudo rm ./obmenu-generator_0.85-3_all.deb
 read -rsn1 -p "Press any key to reboot";echo
 sudo shutdown -r now
