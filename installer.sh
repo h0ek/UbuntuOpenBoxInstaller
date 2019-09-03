@@ -47,7 +47,7 @@ echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 sudo apt -y install ./obmenu-generator_0.85-3_all.deb
-read -r -p "Are you sure? [y/N] " response
+read -r -p "Do you want to install Papirus Icons Theme? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
 echo "Installing Papirus Icons Pack"
