@@ -18,7 +18,7 @@ echo "This script will install and configure OpenBox window manager
 with some software and customized configuration files. It works 
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
-read -p "Press enter to continue"
+read -p
 read -n 1 -s -r -p "Press any key to continue"
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
