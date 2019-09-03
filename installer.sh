@@ -22,6 +22,9 @@ read -rsn1 -p "Press any key to continue";echo
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
+read -r -p "Do you want to install VirtualBox Guest Additions? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
 echo "Installing the packages required to build the VirtualBox Guest Additions"
 sudo apt -y install gcc make perl dkms
 #Install VBoxAdditions
@@ -39,15 +42,17 @@ sudo rm -R /media/vbox/
 #Adding User to vboxsf
 echo "Adding User to vboxsf"
 sudo usermod -aG vboxsf $user
+else
 #Installing all packages
 echo "Installing all packages"
 read -rsn1 -p "Press any key to continue";echo
 sudo apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch
+fi
 echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 sudo apt -y install ./obmenu-generator_0.85-3_all.deb
-read -r -p "Do you want to install Papirus Icons Theme? [Y/n] " response
+read -r -p "Do you want to install Papirus Icons Theme? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
 echo "Installing Papirus Icons Pack"
