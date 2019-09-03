@@ -18,6 +18,7 @@ echo "This script will install and configure OpenBox window manager
 with some software and customized configuration files. It works 
 only with clean and minimal Ubuntu installation. After all it will be
 light and clean OpenBox machine. More info on GITHUB."
+read -n 1 -s -r -p "Press any key to continue"
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
@@ -25,6 +26,7 @@ echo "Installing the packages required to build the VirtualBox Guest Additions"
 apt -y install gcc make perl dkms
 #Install VBoxAdditions
 echo "Please mount CD with VirtualBox Guest Additions"
+read -p "Press enter to continue"
 #Create dir and mount CD
 echo "Mounting CDROM"
 mkdir /media/vbox
