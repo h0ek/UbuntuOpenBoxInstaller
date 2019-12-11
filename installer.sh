@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 cat << "EOF"
  _____ ______  _____  _   _ ______  _____ __   __
 |  _  || ___ \|  ___|| \ | || ___ \|  _  |\ \ / /
@@ -23,10 +24,13 @@ read -rsn1 -p "Press any key to continue";echo
 #Check root
 #[ "$(whoami)" != "root" ] && exec sudo -- "$0" "$@"
 #Install the packages required to build the VirtualBox Guest Additions
-read -r -p "Do you want to install VirtualBox Guest Additions? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-echo "Installing the packages required to build the VirtualBox Guest Additions"
+#read -r -p "Do you want to install VirtualBox Guest Additions? [y/N] " response
+#if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+#then
+echo "Checking if this is virtual environment"
+VBOXCHECK="sudo dmidecode -s system-product-name"
+if ["${VBOXCHECK}" = VirtualBox];
+then echo "This is a VirtualBox! Installing the packages required to build the VirtualBox Guest Additions"
 sudo apt -y install gcc make perl dkms
 #Install VBoxAdditions
 echo "Please mount CD with VirtualBox Guest Additions"
@@ -43,7 +47,11 @@ sudo rm -R /media/vbox/
 #Adding User to vboxsf
 echo "Adding User to vboxsf"
 sudo usermod -aG vboxsf $user
-else
+else echo "This is not a virtual machine, going to the next step"; 
+fi;
+#Updating repositories and packages
+echo "Updating repositories and packages"
+sudo apt update && sudo apt -y dist-upgrade
 #Installing all packages
 echo "Installing all packages"
 read -rsn1 -p "Press any key to continue";echo
@@ -53,13 +61,8 @@ echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
 wget https://download.opensuse.org/repositories/home:/Head_on_a_Stick:/obmenu-generator/Debian_Unstable/all/obmenu-generator_0.85-3_all.deb
 sudo apt -y install ./obmenu-generator_0.85-3_all.deb
-read -r -p "Do you want to install Papirus Icons Theme? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
 echo "Installing Papirus Icons Pack"
-read -rsn1 -p "Press any key to continue";echo
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh | sh
-else
 echo "Installing ly diplay manager"
 sudo git clone https://github.com/cylgom/ly.git /opt/ly/
 sudo make github -C /opt/ly/ 
@@ -68,6 +71,12 @@ sudo make install -C /opt/ly/
 sudo systemctl enable ly.service
 sudo systemctl disable getty@tty2.service
 sudo rm ./obmenu-generator_0.85-3_all.deb
-fi
-read -rsn1 -p "Press any key to reboot";echo
+#Removing unnecessary packages
+echo "Removing unnecessary packages"
+sudo apt -y purge vim*
+#Package cleanup
+echo "apt cleanup"
+sudo apt -y autoremove && sudo apt autoclean
+#All done! Reboot.
+read -rsn1 -p "All done! Press any key to reboot";echo
 sudo shutdown -r now
