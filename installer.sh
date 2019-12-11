@@ -55,7 +55,7 @@ sudo apt update && sudo apt -y dist-upgrade
 #Installing all packages
 echo "Installing all packages"
 read -rsn1 -p "Press any key to continue";echo
-sudo apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch feh
+sudo apt -y install nano mc htop wget curl sakura git net-tools bash-completion openbox obmenu rofi xinit libpam0g-dev libxcb1-dev xorg xauth compton firefox geany flameshot lxappearance tint2 conky i3lock-fancy nomacs zip unzip unrar p7zip neofetch feh xarchiver
 fi
 echo "Installing obmenu-generator"
 read -rsn1 -p "Press any key to continue";echo
